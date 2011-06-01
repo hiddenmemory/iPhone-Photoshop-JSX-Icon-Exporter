@@ -1,5 +1,4 @@
 
-
 PHOTOSHOP - LAYER EXPORT TOOL FOR NORMAL IPHONE GRAPHICS AND RETINA DISPLAY GRAPHICS.  
 
 This script assumes you are working with high resolution graphics for the iPhone Retina display eg 960 x 640
@@ -27,9 +26,9 @@ PHOTOSHOP - IPHONE APP ICON EXPORT FOR MAC ICONS
 Quickly creates 512, 256, 128, 32, 16 px icons which can then be used with Icon Composer (found in /Developer/Applications/Utilities/Icon Composer.app)
 Or just spotlight "icon composer" where you can create new ".icns" files.
 
-
-
 Hope you like this script, hit John Ballinger up on Twitter @sponno on from his website www.bluespark.co.nz
+
+Or even say hi to @darkrock or @hiddenmemory on Twitter!
 
 Please keep this Attribution here if you are going to redistrubte this code. Thanks
 Creative Commons Attribution 3.0 New Zealand License
