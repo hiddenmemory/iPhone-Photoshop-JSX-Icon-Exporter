@@ -49,50 +49,38 @@ function doResizeAndOutput()
 		var pngOptions = new PNGSaveOptions();
 		pngOptions.interlaced = false;
 		
-		// Resize icons from largest to smallest - to preserve quality on resizing.
-		/*
-			Icon@2x.png - 114x114 pixels application icon for high resolution iPhone 4
-			Icon-72.png - 72x72 pixels application icon for iPad
-			Icon-Small@2x.png - 58x58 pixels settings icon for high resolution iPhone
-			Icon.png - 57x57 pixels application icon for standard resolution iPhone
-			Icon-Small-50.png - 50x50 pixels settings icon for iPad
-			Icon-Small.png - 29x29 pixels settings icon for standard resolution iPhone
-		 
-		*/
-		// 114
-		activeDocument.resizeImage(null,114,114,ResampleMethod.BICUBIC);  
-	   	activeDocument.saveAs(File(path + "/Icon@2x.png"), pngOptions, true);                     
+		activeDocument.resizeImage(null,512,512,ResampleMethod.BICUBIC);  
+	   	activeDocument.saveAs(File(path + "/icon512.png"), pngOptions, true);                     
+        
+		// undo document resize.   
+		// This way we get the best scaling to smaller sizes.
+		var baseState = app.activeDocument.historyStates.length - 2;
+		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[baseState];
+		
+	 	activeDocument.resizeImage(null,256,256,ResampleMethod.BICUBIC);  
+		activeDocument.saveAs(File(path + "/icon256.png"), pngOptions, true);
+        
+		// undo document resize.
+		var baseState = app.activeDocument.historyStates.length - 2;
+		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[baseState];
 
-        // Undo Resize so we are working with crisp resizing.
-		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[app.activeDocument.historyStates.length - 2];  	
+		
+	 	activeDocument.resizeImage(null,128,128,ResampleMethod.BICUBIC);  
+		activeDocument.saveAs(File(path + "/icon128.png"), pngOptions, true);
 
-	 	activeDocument.resizeImage(null,72,72,ResampleMethod.BICUBIC);  
-		activeDocument.saveAs(File(path + "/Icon-72.png"), pngOptions, true);
-
-        // Undo Resize so we are working with crisp resizing.
-		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[app.activeDocument.historyStates.length - 2];  	
-
-		// Updated for Xcode 4, this has changed from the spec, but is required for validation		
-	 	activeDocument.resizeImage(null,57,57,ResampleMethod.BICUBIC);  
-		activeDocument.saveAs(File(path + "/Icon-Small@2x.png"), pngOptions, true);
-
-        // Undo Resize so we are working with crisp resizing.
-		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[app.activeDocument.historyStates.length - 2];  	
-
-	 	activeDocument.resizeImage(null,57,57,ResampleMethod.BICUBIC);  
-		activeDocument.saveAs(File(path + "/Icon.png"), pngOptions, true);
-
-        // Undo Resize so we are working with crisp resizing.
-		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[app.activeDocument.historyStates.length - 2];  	
-
-	 	activeDocument.resizeImage(null,50,50,ResampleMethod.BICUBIC);  
-		activeDocument.saveAs(File(path + "/Icon-Small-50.png"), pngOptions, true);
-
-        // Undo Resize so we are working with crisp resizing.
-		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[app.activeDocument.historyStates.length - 2];  	
-
-	 	activeDocument.resizeImage(null,29,29,ResampleMethod.BICUBIC);  
-		activeDocument.saveAs(File(path + "/Icon-Small.png"), pngOptions, true);
+		// undo document resize.
+		var baseState = app.activeDocument.historyStates.length - 2;
+		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[baseState];
+		
+	 	activeDocument.resizeImage(null,32,32,ResampleMethod.BICUBIC);  
+		activeDocument.saveAs(File(path + "/icon32.png"), pngOptions, true);
+        
+		// undo document resize.
+		var baseState = app.activeDocument.historyStates.length - 2;
+		app.activeDocument.activeHistoryState = app.activeDocument.historyStates[baseState];
+		
+	 	activeDocument.resizeImage(null,16,16,ResampleMethod.BICUBIC);  
+		activeDocument.saveAs(File(path + "/icon16.png"), pngOptions, true);
 		
 		 // Close file
 		activeDocument.close(SaveOptions.DONOTSAVECHANGES);
