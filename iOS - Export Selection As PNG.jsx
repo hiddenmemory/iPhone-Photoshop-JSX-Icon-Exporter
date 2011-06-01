@@ -38,6 +38,9 @@ function doResizeAndOutput()
 	// Trim
 	duppedDocument.crop(myRegion);            
 
+	// Trim
+	app.activeDocument.trim(TrimType.TRANSPARENT, true, true, true, true);            
+
 	// Get the new file name.
     var fileName = prompt("File Name, No extension, eg background", ""); 
 	if(fileName==null) return; // You clicked cancle.
